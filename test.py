@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 app = Flask(__name__)
-
+# harmless change to re-run CodeQL
 @app.route("/login", methods=["POST"])
 def login():
     username = request.form.get("username")
