@@ -1,10 +1,10 @@
-from flask import Flask, request
-import subprocess
+import sqlite3
+from flask import request
 
-app = Flask(__name__)
+def login():
+    username = request.args.get("user")
+    password = request.args.get("pass")
 
-@app.route("/run")
-def run():
-    cmd = request.args.get("cmd", "")
-    subprocess.call(cmd, shell=True)  # intentionally vulnerable for CodeQL test
-    return "done"
+    conn = sqlite3.connect("db.sqlite")
+    query = "SELECT * FROM users WHERE username = '" + username + "'"
+    conn.execute(query)   # SQL Injection
