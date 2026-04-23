@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 app = Flask(__name__)
-# harmless change to re-run CodeQL
+# small test change for blocking validation
 @app.route("/login", methods=["POST"])
 def login():
     username = request.form.get("username")
